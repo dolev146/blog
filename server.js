@@ -6,12 +6,18 @@ const marked = require('marked')
 const slugify = require('slugify')
 const methodOverride = require('method-override')
 const app = express();
+require("dotenv").config();
 
-mongoose.connect("mongodb://localhost/blog", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex : true
-});
+const mongodbPassword = process.env.Mongodb_Password
+
+mongoose.connect(
+  `mongodb+srv://Dolev_Admin:${mongodbPassword}@blog.0oakg.mongodb.net/blog`,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  }
+);
 
 // const db = mongoose.connection;
 // db.on("error", console.error.bind(console, "connection error:"));
